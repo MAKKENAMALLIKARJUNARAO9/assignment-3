@@ -1,0 +1,84 @@
+<html>
+<head>
+	<script type="text/javascript">
+	function sendReq()
+	{
+		var a=document.getElementById("aval").value;
+		var b=document.getElementById("bval").value;
+		var c=document.getElementById("cval").value;
+		var d=document.getElementById("dval").value;
+		var e=document.getElementById("eval").value;
+		var f=document.getElementById("fval").value;
+		var g=document.getElementById("gval").value;
+		var h=document.getElementById("hval").value;
+		var i=document.getElementById("ival").value;
+		var j=document.getElementById("jval").value;
+		var k=document.getElementById("kval").value;
+		var l=document.getElementById("lval").value;
+		alert(c);
+		alert(d);
+		alert(f);
+		alert(g);
+		alert(h);
+		var queryString="cart.php?aval="+a+"&bval="+b+"&cval="+c+"&dval="+d+"&eval="+e+"&fval="+f+"&gval="+g+"&hval="+h+"&ival="+i+"&jval="+j+"&kval="+k
+		var XmlObj=new XMLHttpRequest();
+		XmlObj.onreadystatechange=function()
+		{
+			if(XmlObj.readystate=4 && XmlObj.status==200)
+			{
+				document.getElementById("resDiv").innerHTML=XmlObj.responseText;
+			}
+		};
+		XmlObj.open("GET",queryString,true);
+		XmlObj.send();
+	}
+	</script>	
+</head>
+<body>
+	<form>
+	Name <input type="text" id="aval"><br>
+	Gender:<br>
+	<input type="radio" name="gender" id="bval" value="m">Male<br>
+	<input type="radio" name="gender" id="cval" value="f">Female<br>
+	Address:<input type="text" id="dval"><br>
+	phone number:<input type="text" id="eval"><br>
+	payment option:<br>
+	<input type="radio" id="fval">CashOnDelivery<br>
+	<input type="radio" id="gval">InternetBanking<br>
+	<input type="radio" id="hval">Credit/Debit<br>
+	<table border="1">
+		<tr>
+			<td>Product</td>
+			<td>Unit Price</td>
+			<td>Qty</td>
+		</tr>
+		<tr>
+			<td>USB Pendrive</td>
+			<td>300</td>
+			<td><input type="text" id="ival"></td>
+		</tr>
+		<tr>
+			<td>Wireless Mouse</td>
+			<td>200</td>
+			<td><input type="text" id="jval"></td>
+		</tr>
+		<tr>
+			<td>keyboard</td>
+			<td>400</td>
+			<td><input type="text" id="kval"></td>
+		</tr>
+		<tr>
+			<td>Laptop</td>
+			<td>33000</td>
+			<td><input type="text" id="lval"></td>
+		<tr>
+			
+	</table>
+	<input type="button" value="add" onclick="sendReq()"/>
+	</form>
+	<div id="resDiv">
+		<h3>see your result here</h3>
+	</div>
+</body>
+</html>
+	
